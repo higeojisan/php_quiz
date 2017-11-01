@@ -2,7 +2,19 @@
 require_once('MathQuiz.class.php');
 require_once('EnglishQuiz.class.php');
 
-$quizzes = new EnglishQuiz();
+// ジャンルの選択
+echo "クイズのジャンルを指定してください" . PHP_EOL;
+echo "【1】数学" . PHP_EOL;
+echo "【2】英語" . PHP_EOL;
+$genre = trim(fgets(STDIN));
+switch ($genre) {
+   case 1:
+      $quizzes = new MathQuiz();
+      break;
+   case 2:
+      $quizzes = new EnglishQuiz();
+      break;
+}
 
 $correct_num = 0;
 for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++ ) {
