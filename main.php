@@ -1,5 +1,6 @@
 <?php
 require_once('quiz.class.php');
+
 $quizzes = new Quiz();
 
 $correct_num = 0;
@@ -21,17 +22,21 @@ for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++ ) {
    $user_answer = trim(fgets(STDIN));
 
    // 答え合わせ
-   if ($user_answer === $quizzes->getAnswer($i)) {
-      $correct_num++;
-      echo "正解！！" . PHP_EOL;
+   if ($quizzes->isCorrect($user_answer, $i)) {
+     $correct_num++;
+     echo  "正解！！" . PHP_EOL;
    } else {
-      echo "不正解！！" . PHP_EOL;
+     echo "不正解！！" . PHP_EOL;
    }
 
    // 画面のクリア
    sleep(2);
    echo "\033[;H\033[2J";
-   
+
    // 最終問題なら採点結果を表示
+   if ($i === $quizzes::NUMBERS_OF_QUIZZES - 1) {
+      echo "=========採点結果==========" . PHP_EOL;
+      echo $quizzes::NUMBERS_OF_QUIZZES . "問中" . $correct_num . "問正解" . PHP_EOL;
+   }
 }
 
