@@ -1,5 +1,7 @@
 <?php
-abstract class Quiz
+namespace My\Quiz;
+
+abstract class AbstractQuiz
 {
 
    public function __construct()

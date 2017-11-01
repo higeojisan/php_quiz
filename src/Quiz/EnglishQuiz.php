@@ -1,7 +1,7 @@
 <?php
-require_once('AbstractQuiz.class.php');
+namespace My\Quiz;
 
-class EnglishQuiz extends Quiz
+class EnglishQuiz extends AbstractQuiz
 {
 
    const NUMBERS_OF_QUIZZES = 3;
