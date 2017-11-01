@@ -1,7 +1,8 @@
 <?php
-require_once('quiz.class.php');
+require_once('MathQuiz.class.php');
+require_once('EnglishQuiz.class.php');
 
-$quizzes = new Quiz();
+$quizzes = new EnglishQuiz();
 
 $correct_num = 0;
 for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++ ) {
