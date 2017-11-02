@@ -1,23 +1,12 @@
 <?php
 require_once('vendor/autoload.php');
 
-// dump autoload setting.
-//$autoloader = require_once('vendor/autoload.php');
-//echo json_encode($autoloader->getPrefixesPsr4()) . PHP_EOL;
-
 // ジャンルの選択
 echo "クイズのジャンルを指定してください" . PHP_EOL;
 echo "【1】数学" . PHP_EOL;
 echo "【2】英語" . PHP_EOL;
 $genre = trim(fgets(STDIN));
-switch ($genre) {
-   case 1:
-      $quizzes = new \My\Quiz\MathQuiz();
-      break;
-   case 2:
-      $quizzes = new \My\Quiz\EnglishQuiz();
-      break;
-}
+$quizzes = \My\Quiz\QuizFactory::create($genre);
 
 $correct_num = 0;
 for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++ ) {
