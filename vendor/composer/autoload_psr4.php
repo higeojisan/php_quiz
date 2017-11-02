@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'My\\Quiz\\' => array($baseDir . '/src/Quiz'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
 );
