@@ -2,19 +2,16 @@
 use PHPUnit\Framework\TestCase;
 use My\Quiz;
 
-class MathQuizTest extends TestCase
+class QuizTest extends TestCase
 {
-   protected $object;
+   private $object;
 
-   protected $quizzes = array(
-      array('question' => '1 + 1は？', 'answer' => 1, 'choice' => array(1, 2, 3)),
-      array('question' => '1 * 1は？', 'answer' => 1, 'choice' => array(0, 1, 2)),
-      array('question' => '1 - 1は？', 'answer' => 1, 'choice' => array(-1, 0, 1)),
-   ); 
+   private $quizzes;
 
    protected function setUp()
    {
-      $this->object = new \My\Quiz\MathQuiz();
+      $this->quizzes = \My\Quiz\CSVQuizReader::getQuizzes('MathQuiz.csv');
+      $this->object = new \My\Quiz\Quiz($this->quizzes);
    }
 
    public function testgetQuiz()
