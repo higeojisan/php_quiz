@@ -7,11 +7,12 @@ class QuizFactory
    {
       switch ($genre) {
          case 1:
-            return new MathQuiz();
+            $quizzes = CSVQuizReader::getQuizzes('MathQuiz.csv');
             break;
          case 2:
-            return new EnglishQuiz();
+            $quizzes = CSVQuizReader::getQuizzes('EnglishQuiz.csv');
             break;
       }
+      return new Quiz($quizzes);
    }
 }
