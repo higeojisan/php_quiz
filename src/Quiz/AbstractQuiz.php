@@ -11,17 +11,17 @@ abstract class AbstractQuiz
       shuffle($this->quizzes);
    }
 
-   public function getQuiz($num)
+   protected function getQuiz($num)
    {
       return $this->quizzes[$num]['question'];
    }
 
-   public function getAnswer($num)
+   protected function getAnswer($num)
    {
       return $this->quizzes[$num]['answer'];
    }
 
-   public function getChoices($num)
+   protected function getChoices($num)
    {
       return $this->quizzes[$num]['choice'];
    }
