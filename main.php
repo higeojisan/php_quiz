@@ -22,7 +22,7 @@ function quiz_start()
 
    // クイズの開始
    $correct_num = 0;
-   for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++ ) {
+   for ($i = 0; $i < $quizzes::NUMBERS_OF_QUIZZES; $i++) {
       // 問題の表示
       $current_quiz_num = $i + 1;
       echo "Question. $current_quiz_num" . PHP_EOL;
