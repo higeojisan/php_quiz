@@ -1,7 +1,7 @@
 <?php
 namespace My\Quiz;
 
-class ThreeOptionsCSVQuizReader
+class ThreeOptionsCSVQuizReader implements QuizReader
 {
    public static function getQuizzes($filename)
    {
