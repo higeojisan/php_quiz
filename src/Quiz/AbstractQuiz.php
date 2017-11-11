@@ -11,25 +11,15 @@ abstract class AbstractQuiz
       shuffle($this->quizzes);
    }
 
-   public function getQuiz($num)
-   {
-      return $this->quizzes[$num]['question'];
-   }
+   abstract protected function getQuiz($num);
 
-   public function getAnswer($num)
-   {
-      return $this->quizzes[$num]['answer'];
-   }
+   abstract protected function getAnswer($num);
 
-   public function getChoices($num)
-   {
-      return $this->quizzes[$num]['choice'];
-   }
+   abstract protected function getChoices($num);
 
-   public function isCorrect($user_answer, $num)
-   {
-      $user_answer--;
-      return ($user_answer === $this->getAnswer($num)) ? true : false;
-   }
+   abstract public function isCorrect($user_answer, $num);
 
+   abstract public function displayQuiz($num);
+
+   abstract public function displayChoice($num);
 }
