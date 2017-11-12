@@ -7,14 +7,19 @@ function quiz_start()
 {
    // ジャンルの選択
    echo "クイズのジャンルを指定してください" . PHP_EOL;
-   echo "【1】数学" . PHP_EOL;
-   echo "【2】英語" . PHP_EOL;
+   echo "【" . \My\Quiz\QuizFactory::MATH . "】数学" . PHP_EOL;
+   echo "【" . \My\Quiz\QuizFactory::ENGLISH . "】英語" . PHP_EOL;
+   echo "【" . \My\Quiz\QuizFactory::SOCCER . "】サッカー" . PHP_EOL;
    $genre = (int)trim(fgets(STDIN));
 
-   // クイズの方式(2択か3択)の選択
+   // クイズの方式の選択
    echo "クイズの方式を指定してください". PHP_EOL;
-   echo "【1】2択" . PHP_EOL;
-   echo "【2】3択" . PHP_EOL;
+   if ($genre == \My\Quiz\QuizFactory::MATH || $genre == \My\Quiz\QuizFactory::ENGLISH) {
+      echo "【" . \My\Quiz\QuizFactory::TWOOPTIONS . "】2択" . PHP_EOL;
+      echo "【" . \My\Quiz\QuizFactory::THREEOPTIONS . "】3択" . PHP_EOL;
+   } elseif ($genre == \My\Quiz\QuizFactory::SOCCER) {
+      echo "【" . \My\Quiz\QuizFactory::FILLINTHEBLANK . "】穴埋め" . PHP_EOL;
+   }
    $option = (int)trim(fgets(STDIN));
 
    // クイズオブジェクトの生成
