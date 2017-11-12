@@ -21,13 +21,11 @@ class QuizFactory
             switch ($option) {
                // 3択クイズの場合
                case self::THREEOPTIONS:
-                  $quizzes = ThreeOptionsCSVQuizReader::getQuizzes('ThreeOptionsMathQuiz.csv');
-                  return new ThreeOptionsQuiz($quizzes);
+                  return new ThreeOptionsQuiz(ThreeOptionsCSVQuizReader::getQuizzes('ThreeOptionsMathQuiz.csv'));
                   break;
                // 2択クイズの場合
                case self::TWOOPTIONS:
-                  $quizzes = TwoOptionsCSVQuizReader::getQuizzes('TwoOptionsMathQuiz.csv');
-                  return new TwoOptionsQuiz($quizzes);
+                  return new TwoOptionsQuiz(TwoOptionsCSVQuizReader::getQuizzes('TwoOptionsMathQuiz.csv'));
                   break;
             }
          // 英語の場合
@@ -35,13 +33,11 @@ class QuizFactory
             switch ($option) {
                // 3択クイズの場合
                case self::THREEOPTIONS:
-                  $quizzes = ThreeOptionsCSVQuizReader::getQuizzes('ThreeOptionsEnglishQuiz.csv');
-                  return new ThreeOptionsQuiz($quizzes);
+                  return new ThreeOptionsQuiz(ThreeOptionsCSVQuizReader::getQuizzes('ThreeOptionsEnglishQuiz.csv'));
                   break;
                // 2択クイズの場合
                case self::TWOOPTIONS:
-                  $quizzes = TwoOptionsCSVQuizReader::getQuizzes('TwoOptionsEnglishQuiz.csv');
-                  return new TwoOptionsQuiz($quizzes);
+                  return new TwoOptionsQuiz(TwoOptionsCSVQuizReader::getQuizzes('TwoOptionsEnglishQuiz.csv'));
                   break;
             }
          // サッカーの場合
@@ -49,8 +45,7 @@ class QuizFactory
             switch ($option) {
                // 穴埋めクイズの場合
                case self::FILLINTHEBLANK:
-                  $quizzes = FillInTheBlankCSVQuizReader::getQuizzes('FillInTheBlankSoccerQuiz.csv');
-                  return new FillInTheBlankQuiz($quizzes);
+                  return new FillInTheBlankQuiz(FillInTheBlankCSVQuizReader::getQuizzes('FillInTheBlankSoccerQuiz.csv'));
                   break;
             }
       }
