@@ -33,4 +33,14 @@ class FillInTheBlankQuiz extends AbstractQuiz
    {
       return ($user_answer === $this->getAnswer($num)) ? true : false;
    }
+
+   public function inputCheck($user_answer)
+   {
+      if ($user_answer !== "") {
+         return true;
+      } else {
+         echo "何かしら入力してください" . PHP_EOL;
+         return false;
+      }
+   }
 }

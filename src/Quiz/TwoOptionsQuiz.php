@@ -33,4 +33,14 @@ class TwoOptionsQuiz extends AbstractQuiz
    {
       return ($user_answer === $this->getAnswer($num)) ? true : false;
    }
+
+   public function inputCheck($user_answer)
+   {
+      if ($user_answer === 'y' || $user_answer === 'n') {
+         return true;
+      } else {
+         echo "yもしくはnを入力してください" . PHP_EOL;
+         return false;
+      }
+   }
 }

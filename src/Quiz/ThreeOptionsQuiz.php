@@ -40,4 +40,15 @@ class ThreeOptionsQuiz extends AbstractQuiz
       $user_answer--;
       return ($user_answer === $this->getAnswer($num)) ? true : false;
    }
+
+   public function inputCheck($user_answer)
+   {
+      $user_answer = (int)$user_answer;
+      if ($user_answer === 1 || $user_answer === 2 || $user_answer === 3) {
+         return true;
+      } else {
+         echo "1から3の半角数字を入力してください" . PHP_EOL;
+         return false;
+      }
+   }
 }
