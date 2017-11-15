@@ -65,6 +65,8 @@ function quiz_start()
          $user_answer = trim(fgets(STDIN));
          if ($quizzes->inputCheck($user_answer)) {
             break;
+         } else {
+            echo $quizzes::ERROR_MESSAGE . PHP_EOL;
          }
       }
 

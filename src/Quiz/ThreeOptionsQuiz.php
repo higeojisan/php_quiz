@@ -5,6 +5,8 @@ class ThreeOptionsQuiz extends AbstractQuiz
 {
    const NUMBERS_OF_QUIZZES = 3;
 
+   const ERROR_MESSAGE = '1から3の半角数字を入力してください';
+
    protected function getQuiz($num)
    {
       return $this->quizzes[$num]['question'];
@@ -47,7 +49,6 @@ class ThreeOptionsQuiz extends AbstractQuiz
       if ($user_answer === 1 || $user_answer === 2 || $user_answer === 3) {
          return true;
       } else {
-         echo "1から3の半角数字を入力してください" . PHP_EOL;
          return false;
       }
    }

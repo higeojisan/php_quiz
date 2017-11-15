@@ -5,6 +5,8 @@ class TwoOptionsQuiz extends AbstractQuiz
 {
    const NUMBERS_OF_QUIZZES = 3;
 
+   const ERROR_MESSAGE = 'yもしくはnを入力してください';
+
    protected function getQuiz($num)
    {
       return $this->quizzes[$num]['question'];
@@ -39,7 +41,6 @@ class TwoOptionsQuiz extends AbstractQuiz
       if ($user_answer === 'y' || $user_answer === 'n') {
          return true;
       } else {
-         echo "yもしくはnを入力してください" . PHP_EOL;
          return false;
       }
    }
