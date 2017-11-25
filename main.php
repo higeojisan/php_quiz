@@ -10,7 +10,15 @@ function quiz_start()
    echo "【" . \My\Quiz\QuizFactory::MATH . "】数学" . PHP_EOL;
    echo "【" . \My\Quiz\QuizFactory::ENGLISH . "】英語" . PHP_EOL;
    echo "【" . \My\Quiz\QuizFactory::SOCCER . "】サッカー" . PHP_EOL;
-   $genre = (int)trim(fgets(STDIN));
+   while (true) {
+      // 入力値のチェック
+      $genre = (int)trim(fgets(STDIN));
+      if ($genre === \My\Quiz\QuizFactory::MATH || $genre === \My\Quiz\QuizFactory::ENGLISH || $genre === \My\Quiz\QuizFactory::SOCCER) {
+         break;
+      } else {
+         echo "1～3の半角数字で入力してください。" . PHP_EOL;
+      }
+   }
 
    // クイズの方式の選択
    echo "クイズの方式を指定してください". PHP_EOL;
@@ -20,7 +28,23 @@ function quiz_start()
    } elseif ($genre == \My\Quiz\QuizFactory::SOCCER) {
       echo "【" . \My\Quiz\QuizFactory::FILLINTHEBLANK . "】穴埋め" . PHP_EOL;
    }
-   $option = (int)trim(fgets(STDIN));
+   while (true) {
+      // 入力値のチェック
+      $option = (int)trim(fgets(STDIN));
+      if ($genre === \My\Quiz\QuizFactory::MATH || $genre === \My\Quiz\QuizFactory::ENGLISH) {
+         if ($option === \My\Quiz\QuizFactory::TWOOPTIONS || $option == \My\Quiz\QuizFactory::THREEOPTIONS) {
+            break;
+         } else {
+            echo "1もしくは2を半角数字で入力してください" . PHP_EOL;
+         }
+      } elseif ($genre === \My\Quiz\QuizFactory::SOCCER) {
+         if ($option === \My\Quiz\QuizFactory::FILLINTHEBLANK) {
+            break;
+         } else {
+            echo "3を半角数字で入力してください" . PHP_EOL;
+         }
+      }
+   }
 
    // クイズオブジェクトの生成
    $quizzes = \My\Quiz\QuizFactory::create($genre, $option);
@@ -36,8 +60,15 @@ function quiz_start()
       // 選択肢の表示
       $quizzes->displayChoice($i);
 
-      // 回答の入力の受付
-      $user_answer = trim(fgets(STDIN));
+      // 回答の入力の受付&入力値のチェック
+      while (true) {
+         $user_answer = trim(fgets(STDIN));
+         if ($quizzes->inputCheck($user_answer)) {
+            break;
+         } else {
+            echo $quizzes::ERROR_MESSAGE . PHP_EOL;
+         }
+      }
 
       // 答え合わせ
       if ($quizzes->isCorrect($user_answer, $i)) {

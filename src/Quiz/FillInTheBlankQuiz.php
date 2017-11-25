@@ -5,6 +5,8 @@ class FillInTheBlankQuiz extends AbstractQuiz
 {
    const NUMBERS_OF_QUIZZES = 3;
 
+   const ERROR_MESSAGE = '何かしら入力してください';
+
    protected function getQuiz($num)
    {
       return $this->quizzes[$num]['question'];
@@ -32,5 +34,14 @@ class FillInTheBlankQuiz extends AbstractQuiz
    public function isCorrect($user_answer, $num)
    {
       return ($user_answer === $this->getAnswer($num)) ? true : false;
+   }
+
+   public function inputCheck($user_answer)
+   {
+      if ($user_answer !== "") {
+         return true;
+      } else {
+         return false;
+      }
    }
 }
